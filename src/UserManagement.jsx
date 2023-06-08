@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { UserContext } from './UserContext';
-
+import "./App.css"
 const UserManagement = () => {
   const { users, dispatch } = useContext(UserContext);
   const [name, setName] = useState('');
@@ -28,24 +28,31 @@ const UserManagement = () => {
   };
 
   return (
-    <div>
+    <div className="Container">
+      <div className="Main">
       <form onSubmit={handleAddUser}>
+    <div className='Input'>
+        <label>Name:</label>
         <input
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Name"
         />
+        
+        <label>Email:</label>
         <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Email"
         />
-        <button type="submit">Add User</button>
+        </div>
+        <button className="Submit" type="submit">Add User</button>
       </form>
-      
-      <table>
+      </div>
+      <div className='B'>
+      <table className="Table" border={3} cellPadding={10}>
         <thead>
           <tr>
             <th>Name</th>
@@ -70,6 +77,7 @@ const UserManagement = () => {
           ))}
         </tbody>
       </table>
+      </div>
     </div>
   );
 };
